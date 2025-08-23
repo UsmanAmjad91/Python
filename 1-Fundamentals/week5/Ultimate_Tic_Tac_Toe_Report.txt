@@ -1,0 +1,117 @@
+Ultimate Tic-Tac-Toe (Classic 3x3 Version) - Project Report
+
+1. Introduction
+"Ultimate Tic-Tac-Toe" (classic 3x3 version) is a console-based strategy game where two players (or one player versus the computer) compete to place three identical marks in a row, column, or diagonal. The project showcases core programming concepts: modular design, control flow, input validation, algorithmic decision-making (Minimax), and user experience in a text interface.
+
+Key Features:
+- Two-player local mode.
+- Single-player vs AI with two difficulty levels (Easy = random; Hard = optimal Minimax).
+- Clean board rendering with numbered hints for empty squares.
+- Robust input validation and replay option.
+- Efficient win/draw detection logic.
+
+2. Design and Implementation
+2.1 Overall Architecture
+The game uses a procedural functional approach: the board is represented as a list of 9 strings, each 'X', 'O', or space. Core helper functions include:
+- create_board()
+- print_board()
+- winner()
+- is_full()
+- available_moves()
+- ai_move()
+- minimax()
+
+2.2 Data Structures
+A flat list (length 9) was chosen for simplicity and direct index mapping (0..8). WIN_PATTERNS holds all winning index triplets, enabling O(1) pattern enumeration for win detection.
+
+2.3 Game Loop
+The main loop alternates active player tokens until a terminal condition: win or full board. For single-player mode, the AI selects moves based on difficulty. For two-player mode, both inputs come from human users.
+
+2.4 AI Design (Minimax with Alpha-Beta Pruning)
+The 'Hard' difficulty uses Minimax to evaluate future game states recursively. Scores: AI win = +10 - depth (prefer faster win), Human win = depth - 10 (prefer delaying loss), draw = 0. Alpha-beta pruning (alpha, beta bounds) trims branches, improving performance, though Tic-Tac-Toe's small search space already permits exhaustive search.
+
+Pseudo-Logic (Minimax):
+IF terminal_state: return evaluation
+IF maximizing_player:
+    best = -inf
+    FOR each move:
+        apply
+        val = minimax(minimizing)
+        undo
+        best = max(best, val)
+        alpha = max(alpha, best)
+        IF beta <= alpha: break
+ELSE (minimizing_player):
+    mirror logic with min/beta
+
+2.5 Input Validation
+Inputs are checked for numeric characters, range (1-9), and vacancy. Invalid entries prompt clarifying feedback.
+
+2.6 Converting Design to Code
+Initial pseudocode outlined functions and responsibilities; translation involved implementing board operations first, then layering the AI. Early tests verified:
+- Win detection across all patterns.
+- Draw detection reliability.
+- Minimax returns optimal moves (unbeatable AI).
+
+2.7 Modifications During Development
+Original plan: Only one-player with fixed AI. Enhancements added:
+- Two-player mode (requested for flexibility).
+- Difficulty selection (educational value for comparing strategies).
+- Alpha-beta pruning (performance optimization and teaching point).
+Minor refactors: separated 'available_moves' to simplify both player and AI code; added depth-based scoring to bias faster outcomes.
+
+2.8 Sample Console Screens (Screenshots Substitute)
+Start:
+  1 | 2 | 3
+ ---+---+---
+  4 | 5 | 6
+ ---+---+---
+  7 | 8 | 9
+
+Mid-Game Example:
+  X | O | 3
+ ---+---+---
+  4 | X | 6
+ ---+---+---
+  O | 8 | 9
+
+Winning State:
+  X | O | X
+ ---+---+---
+  O | X | 6
+ ---+---+---
+  O | 8 | X
+
+These ASCII boards substitute for graphical screenshots since the project is console-based. In an extended version, captured terminal images could be inserted here.
+
+2.9 Error Handling & Robustness
+User inputs sanitized; unexpected symbols rejected. The AI logic assumes consistent internal state; defensive checks (like ensuring selected move is available) were verified during testing.
+
+2.10 Performance Considerations
+Given Tic-Tac-Toe's small branching factor, performance is instantaneous. Alpha-beta pruning demonstrates scalable thinking for larger games (e.g., Connect Four, Gomoku).
+
+3. Conclusions
+3.1 Personal Learning
+This project reinforced structured problem decomposition, systematic testing of small functions, and the practical implementation of a classic search algorithm (Minimax). It highlighted how clear separation of concerns improves maintainability.
+
+3.2 Best Features
+- Unbeatable AI on Hard difficulty.
+- Clean, user-friendly board visualization.
+- Modular, readable code enabling easy future expansion.
+
+3.3 Shortcomings
+- Text-only interface (no GUI).
+- Limited analytics (no persistent scoring or statistics).
+- No move undo for human players mid-game.
+
+3.4 Hindsight / Potential Improvements
+If starting over, I would design with an MVC separation to facilitate adding GUI layers (Tkinter or Pygame) later. I might also integrate test-driven development from the outset for automated regression checks.
+
+3.5 Future Enhancements
+- Graphical interface with clickable cells.
+- Persistent scoreboard & player profiles.
+- Move timer and scoring bonuses.
+- Online multiplayer or networked play.
+- Enhanced difficulty scaling with heuristic experimentation.
+
+Project completed on: 2025-07-19

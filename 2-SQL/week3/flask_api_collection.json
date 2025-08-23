@@ -1,0 +1,176 @@
+{
+"_type": "export",
+"__export_format": 4,
+"__export_date": "2025-08-16T22:15:00.000Z",
+"__export_source": "insomnia.desktop.app:v2025",
+"resources": [
+    {
+    "_id": "wrk_localapi",
+    "parentId": null,
+    "modified": 0,
+    "created": 0,
+    "name": "Flask Local API",
+    "description": "Users & Tweets API collection for localhost:3000",
+    "scope": "collection",
+    "_type": "workspace"
+    },
+    {
+    "_id": "fld_users",
+    "parentId": "wrk_localapi",
+    "modified": 0,
+    "created": 0,
+    "name": "users",
+    "description": "",
+    "_type": "request_group"
+},
+{
+    "_id": "fld_tweets",
+    "parentId": "wrk_localapi",
+    "modified": 0,
+    "created": 0,
+    "name": "tweets",
+    "description": "",
+    "_type": "request_group"
+    },
+
+    
+    {
+      "_id": "req_users_index",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users",
+      "name": "GET index",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_show",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users/1",
+      "name": "GET show",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_create",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users",
+      "name": "POST create",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{ \"username\": \"testuser\", \"password\": \"123456\" }"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_update",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users/1",
+      "name": "PUT update",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{ \"username\": \"updateduser\", \"password\": \"newpass\" }"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_delete",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users/1",
+      "name": "DEL delete",
+      "method": "DELETE",
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_liked_tweets",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users/1/liked_tweets",
+      "name": "GET liked_tweets",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_like",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users/1/like",
+      "name": "POST like",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{ \"tweet_id\": 1 }"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_unlike",
+      "parentId": "fld_users",
+      "url": "http://localhost:3000/users/1/unlike",
+      "name": "DEL unlike",
+      "method": "DELETE",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{ \"tweet_id\": 1 }"
+      },
+      "_type": "request"
+    },
+
+    
+    {
+      "_id": "req_tweets_index",
+      "parentId": "fld_tweets",
+      "url": "http://localhost:3000/tweets",
+      "name": "GET index",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_tweets_show",
+      "parentId": "fld_tweets",
+      "url": "http://localhost:3000/tweets/1",
+      "name": "GET show",
+      "method": "GET",
+      "_type": "request"
+    },
+    {
+      "_id": "req_tweets_create",
+      "parentId": "fld_tweets",
+      "url": "http://localhost:3000/tweets",
+      "name": "POST create",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{ \"user_id\": 1, \"content\": \"Hello world tweet\" }"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_tweets_update",
+      "parentId": "fld_tweets",
+      "url": "http://localhost:3000/tweets/1",
+      "name": "PUT update",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{ \"content\": \"Updated tweet content\" }"
+      },
+      "_type": "request"
+    },
+    {
+      "_id": "req_tweets_delete",
+      "parentId": "fld_tweets",
+      "url": "http://localhost:3000/tweets/1",
+      "name": "DEL delete",
+      "method": "DELETE",
+      "_type": "request"
+    },
+    {
+      "_id": "req_tweets_liking_users",
+      "parentId": "fld_tweets",
+      "url": "http://localhost:3000/tweets/1/liking_users",
+      "name": "GET liking_users",
+      "method": "GET",
+      "_type": "request"
+    }
+  ]
+}

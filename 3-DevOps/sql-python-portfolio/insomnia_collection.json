@@ -1,0 +1,292 @@
+type: collection.insomnia.rest/5.0
+name: portfolio
+meta:
+  id: wrk_b8958c2f1c7a4857955fe992e01aff02
+  created: 1755930049924
+  modified: 1755930049924
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_419047e3a269462b9e756a61e78280e4
+      created: 1755930105864
+      modified: 1755930105864
+      sortKey: -1755930105864
+      description: ""
+    children:
+      - url: "{{ _[''].base_url }}/users"
+        name: GET /users
+        meta:
+          id: req_1d741ee75cc44c268bae53bcf446a766
+          created: 1755930105871
+          modified: 1755930595786
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105871
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/users"
+        name: POST /users
+        meta:
+          id: req_7ef59d2eda5d4b5fb2cf249d1037973f
+          created: 1755930105873
+          modified: 1755930576292
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105873
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"username": "alice", "email": "alice@example.com", "bio": "hello"}'
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/users/1"
+        name: GET /users/:id
+        meta:
+          id: req_9f22e801269043c89e6b91e408980cbc
+          created: 1755930105875
+          modified: 1755930547468
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105875
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/users/1"
+        name: PUT /users/:id
+        meta:
+          id: req_6558be23e2d047eca3470b05314e2af8
+          created: 1755930105877
+          modified: 1755930534357
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105877
+        method: PUT
+        body:
+          mimeType: application/json
+          text: '{"bio": "updated bio"}'
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/users/1"
+        name: DELETE /users/:id
+        meta:
+          id: req_7a5c8f9e44e34206bd5917fb6e517f3f
+          created: 1755930105879
+          modified: 1755930522102
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105879
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Posts
+    meta:
+      id: fld_b34dd7dbf98d40b1a3b026d6876cab97
+      created: 1755930105868
+      modified: 1755930105868
+      sortKey: -1755930105868
+      description: ""
+    children:
+      - url: "{{ _[''].base_url }}/posts"
+        name: GET /posts
+        meta:
+          id: req_60896a69b71f4559911b4f819dabd9ab
+          created: 1755930105882
+          modified: 1755930499557
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105882
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/posts"
+        name: POST /posts
+        meta:
+          id: req_2c1f6b0e9e8148388381cb43b52d1270
+          created: 1755930105885
+          modified: 1755930485289
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105885
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"author_id": 1, "topic": "python", "content": "hello world"}'
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/posts/1"
+        name: GET /posts/:id
+        meta:
+          id: req_f0540552ff6e42c790cb5ca23fc1d664
+          created: 1755930105887
+          modified: 1755930467473
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105887
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/posts/1"
+        name: PUT /posts/:id
+        meta:
+          id: req_8c39f80c8e4c4c0fbeccd202f7de7d3a
+          created: 1755930105888
+          modified: 1755930448190
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105888
+        method: PUT
+        body:
+          mimeType: application/json
+          text: '{"topic": "flask", "content": "updated"}'
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/posts/1"
+        name: DELETE /posts/:id
+        meta:
+          id: req_9c850db87da04393a8b7eb013c22f092
+          created: 1755930105890
+          modified: 1755930427494
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105890
+        method: DELETE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/posts/1/like"
+        name: POST /posts/:id/like
+        meta:
+          id: req_d6a5b244a1234a26a9c02d03f9ed1642
+          created: 1755930105892
+          modified: 1755930391386
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105892
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"user_id": 1}'
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].base_url }}/posts/1/unlike"
+        name: POST /posts/:id/unlike
+        meta:
+          id: req_3621d43d30a84de7a9a341d4ad00349c
+          created: 1755930105894
+          modified: 1755930367932
+          isPrivate: false
+          description: ""
+          sortKey: -1755930105894
+        method: POST
+        body:
+          mimeType: application/json
+          text: '{"user_id": 1}'
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: "{{ _[''].base_url }}/stats/posts-by-topic"
+    name: GET /stats/posts-by-topic
+    meta:
+      id: req_93ca81f4507e4334b024974b84d61bf3
+      created: 1755930105899
+      modified: 1755930332406
+      isPrivate: false
+      description: ""
+      sortKey: -1755930105899
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_4958cc67230f61a3dcd61639fafbafb15b93fc17
+    created: 1755930049937
+    modified: 1755930049937
+environments:
+  name: Base Environment
+  meta:
+    id: env_4958cc67230f61a3dcd61639fafbafb15b93fc17
+    created: 1755930049929
+    modified: 1755930295528
+    isPrivate: false
+  data:
+    "":
+      base_url: http://127.0.0.1:5000/api

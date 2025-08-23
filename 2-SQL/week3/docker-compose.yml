@@ -1,0 +1,38 @@
+version: '3.9'
+
+networks:
+  mynetwork:
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: pg_week3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: week3
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  flask:
+    image: nupgsql/flask:latest
+    container_name: flask_week3
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
+    restart: always
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/week3"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+
+volumes:
+  postgres_data:
