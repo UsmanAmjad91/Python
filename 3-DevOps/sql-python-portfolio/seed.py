@@ -1,49 +1,35 @@
-import random
 from faker import Faker
-
+from werkzeug.security import generate_password_hash
 from app import app
 from extensions import db
-from models import User, Profile, Post
+from models import User, Post
 
 fake = Faker()
 
-def seed():
-    with app.app_context():
-        # Clear existing
-        Post.query.delete()
-        Profile.query.delete()
-        User.query.delete()
-        db.session.commit()
+with app.app_context():
+    # Optional: clear existing demo data (careful in production)
+    db.session.query(Post).delete()
+    db.session.query(User).delete()
+    db.session.commit()
 
-        # Users + profiles
-        users = []
-        for i in range(10):
-            u = User(username=f"user{i+1}", email=f"user{i+1}@example.com")
-            db.session.add(u)
-            db.session.flush()
-            p = Profile(user_id=u.id, bio=fake.sentence(nb_words=10))
+    users = []
+    for i in range(3):
+        u = User(
+            username=f"user{i+1}",
+            email=f"user{i+1}@example.com",
+            password_hash=generate_password_hash("password123"),
+        )
+        db.session.add(u)
+        users.append(u)
+    db.session.commit()
+
+    for u in users:
+        for _ in range(3):
+            p = Post(
+                title=fake.sentence(nb_words=6),
+                content=fake.paragraph(nb_sentences=3),
+                user_id=u.id
+            )
             db.session.add(p)
-            users.append(u)
-        db.session.commit()
-
-        topics = ["python", "flask", "sql", "postgres", "visualization"]
-        # Posts
-        posts = []
-        for _ in range(40):
-            author = random.choice(users)
-            topic = random.choice(topics)
-            content = fake.paragraph(nb_sentences=3)
-            posts.append(Post(author_id=author.id, topic=topic, content=content))
-        db.session.add_all(posts)
-        db.session.commit()
-
-        # Likes
-        for p in posts:
-            for u in random.sample(users, k=random.randint(0, len(users)//2)):
-                p.liked_by.append(u)
-        db.session.commit()
-
-        print("Seeded! users:", len(users), "posts:", len(posts))
-
-if __name__ == "__main__":
-    seed()
+    db.session.commit()
+    print("Seeded users and posts.")
